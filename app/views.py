@@ -9,8 +9,8 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
-from json
-import requests
+# from json
+# import requests
 
 import pya3rt
 
@@ -20,19 +20,19 @@ handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 talk_api = settings.TALK_API
 
 # 天気予報 RakutenRapidApiのOpenWeatherMapを使う。
-def get_weather():
-    url = "https://community-open-weather-map.p.rapidapi.com/weather"
-    querystring = {"q":"Kobe,jp","units":"metric","lang":"ja"}
-    headers = {
-    'x-rapidapi-key': "415427c189msh5c445f822aa1907p101ff9jsn869b4fac17ff" ,
-    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
-    }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    forecastData = json.loads(response.text)
+# def get_weather():
+#     url = "https://community-open-weather-map.p.rapidapi.com/weather"
+#     querystring = {"q":"Kobe,jp","units":"metric","lang":"ja"}
+#     headers = {
+#     'x-rapidapi-key': "415427c189msh5c445f822aa1907p101ff9jsn869b4fac17ff" ,
+#     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
+#     }
+#     response = requests.request("GET", url, headers=headers, params=querystring)
+#     forecastData = json.loads(response.text)
 
-    if not ('list' in forecastData):
-        pirnt (error)
-        return
+#     if not ('list' in forecastData):
+#         pirnt (error)
+#         return
 
 
 
