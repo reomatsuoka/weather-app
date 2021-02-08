@@ -130,5 +130,7 @@ if not DEBUG:
     import os
     LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
-    TALK_API = os.environ["TALK_API"]
+    # TALK_API = os.environ["TALK_API"]
+    x-rapidapi-key = os.environ["x-rapidapi-key"]
+    x-rapidapi-host = os.environ["x-rapidapi-host"]
     django_heroku.settings(locals())

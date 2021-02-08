@@ -9,11 +9,31 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
-import pya3rt
+from json
+import requests
+
+# import pya3rt
+
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
-talk_api = settings.TALK_API
+# talk_api = settings.TALK_API
+
+# 天気予報 RakutenRapidApiのOpenWeatherMapを使う。
+def get_weather():
+    url = "https://community-open-weather-map.p.rapidapi.com/weather"
+    querystring = {"q":"Kobe,jp","units":"metric","lang":"ja"}
+    headers = {
+    'x-rapidapi-key': settings.x-rapidapi-key ,
+    'x-rapidapi-host': settings.x-rapidapi-host,
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    forecastData = json.loads(response.text)
+
+    if not ('list' in forecastData):
+        pirnt (error)
+        return
+
 
 
 class CallbackView(View):
@@ -42,10 +62,10 @@ class CallbackView(View):
     @staticmethod
     @handler.add(MessageEvent, message=TextMessage)
     def message_event(event):
-        # reply = event.message.text    オウム返し
-        client = pya3rt.TalkClient(talk_api)
-        response = client.talk(event.message.text)
-        reply = response['results'][0]['reply']
+        reply = event.message.text 
+        # client = pya3rt.TalkClient(talk_api)
+        # response = client.talk(event.message.text)
+        # reply = response['results'][0]['reply']
 
         line_bot_api.reply_message(
             event.reply_token,
