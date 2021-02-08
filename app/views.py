@@ -24,8 +24,8 @@ def get_weather():
     url = "https://community-open-weather-map.p.rapidapi.com/weather"
     querystring = {"q":"Kobe,jp","units":"metric","lang":"ja"}
     headers = {
-    'x-rapidapi-key': settings.X_RAPIDAPI_KEY ,
-    'x-rapidapi-host': settings.X_RAPIDAPI_HOST,
+    'x-rapidapi-key': "415427c189msh5c445f822aa1907p101ff9jsn869b4fac17ff" ,
+    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com",
     }
     response = requests.request("GET", url, headers=headers, params=querystring)
     forecastData = json.loads(response.text)

@@ -128,10 +128,7 @@ except ImportError:
 if not DEBUG:
     import django_heroku
     import os
-    import requests
     LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
     LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
     # TALK_API = os.environ["TALK_API"]
-    X_RAPIDAPI_KEY = os.environ["X_RAPIDAPI_KEY"]
-    X_RAPIDAPI_HOST = os.environ["X_RAPIDAPI_HOST"]
     django_heroku.settings(locals())
