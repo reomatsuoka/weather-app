@@ -12,6 +12,9 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import json
 import requests
 from pytz import timezone
+import datetime
+import os
+import sys
 
 
 import pya3rt
@@ -19,20 +22,15 @@ import pya3rt
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
-talk_api = settings.TALK_API
+API_KEY = "415427c189msh5c445f822aa1907p101ff9jsn869b4fac17ff"
+ZIP = '663-8202,jp'
+API_URL = 'http://api.openweathermap.org/data/2.5/forecast?zip={0}&units=metric&lang=ja&APPID={1}'
+# talk_api = settings.TALK_API
 
 # 天気予報 RakutenRapidApiのOpenWeatherMapを使う。
 def getWeather():
-    url = "https://community-open-weather-map.p.rapidapi.com/forecast"
-
-querystring = {"q":"Nishinomiya,jp","lat":"34.7489444","lon":"135.3417722","lang":"ja"}
-
-headers = {
-    'x-rapidapi-key': "415427c189msh5c445f822aa1907p101ff9jsn869b4fac17ff",
-    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com"
-    }
-
-response = requests.request("GET", url, headers=headers, params=querystring)
+    url = API_URL.format(ZIP, API_KEY)
+    response = requests.get(url)
     forecastData = json.loads(response.text)
 
     if not ('list' in forecastData):
