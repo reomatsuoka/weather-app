@@ -68,9 +68,6 @@ def getWeather():
         words += '\n{0}\n天気:{1} {2}\n気温(℃):{3}\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y-%m-%d %H:%M'), emoji, weatherDescription, temperature, rainfall)
 
     return words
-        else :
-
-
 
 class CallbackView(View):
     def get(self, request, *args, **kwargs):
