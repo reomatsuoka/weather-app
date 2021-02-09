@@ -94,54 +94,19 @@ class CallbackView(View):
 
     @staticmethod
     @handler.add(MessageEvent, message=TextMessage)
-    # def message_event(event):
-    #     push_text = event.message.text 
-    #     weatherText = getWeather()
-    #     if push_text == "天気":
-    #         line_bot_api.reply_message(
-    #         event.push_text_token,
-    #         TextSendMessage(text=weatherText)
-    #         )
-    #     else:
-    #         line_bot_api.reply_message(
-    #         event.push_text_token,
-    #         TextSendMessage(text=push_text)
-    #         )
+    def message_event(event):
+        push_text = event.message.text 
+        weatherText = getWeather()
+        if push_text == "天気":
+            line_bot_api.reply_message(
+            event.push_text_token,
+            TextSendMessage(text=weatherText)
+            )
+        else:
+            line_bot_api.reply_message(
+            event.push_text_token,
+            TextSendMessage(text=push_text)
+            )
         # client = pya3rt.TalkClient(talk_api)
         # response = client.talk(event.message.text)
         # reply = response['results'][0]['reply']
-
-# 指定のLINEユーザー(グループ)に通知
-def push_message(self, to, messages, timeout=None):
-	if not isinstance(messages, (list, tuple)):
-		messages = [messages]
-
-	data = {
-		'to': to,
-		'messages': [message.as_json_dict() for message in messages]
-	}
-
-	self._post(
-		'/v2/bot/message/push', data=json.dumps(data), timeout=timeout
-	)
-# 指定のLINEユーザー(グループ)に通知
-def push_message(self, to, messages, timeout=None):
-	if not isinstance(messages, (list, tuple)):
-		messages = [messages]
-	data = {
-		'to': to,
-		'messages': [message.as_json_dict() for message in messages]
-	}
-	self._post(
-		'/v2/bot/message/push', data=json.dumps(data), timeout=timeout
-	)
-
-def main():
-	# 天気情報取得
-	wetherText = getWeather()
-	messages = TextSendMessage(text=wetherText)
-	# 指定のLINEユーザー(グループ)に通知
-	line_bot_api.push_message(user_id, messages=messages)
-
-if __name__ == "__main__":
-	main()
