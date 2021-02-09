@@ -104,12 +104,12 @@ class CallbackView(View):
         weatherText = getWeather()
         if push_text == "天気":
             line_bot_api.reply_message(
-            event.reply_token,
+            event.push_text_token,
             TextSendMessage(text=weatherText)
             )
         else:
             line_bot_api.reply_message(
-            event.reply_token,
+            event.push_text_token,
             TextSendMessage(text=push_text)
             )
         # client = pya3rt.TalkClient(talk_api)
