@@ -116,7 +116,7 @@ class CallbackView(View):
         #     line_bot_api.push_text_message(
         #     event.push_text_token,
         #     TextSendMessage(text=push_text)
-            )
+            # )
         # client = pya3rt.TalkClient(talk_api)
         # response = client.talk(event.message.text)
         # reply = response['results'][0]['reply']
