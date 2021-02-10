@@ -102,10 +102,18 @@ class CallbackView(View):
         reply = event.message.text 
         weatherText = getWeather()
 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=weatherText)
-        )
+        if reply == "天気":
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=weatherText)
+            )
+
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply)
+            )
+
 
         # if push_text == "天気":
         #     line_bot_api.push_text_message(
