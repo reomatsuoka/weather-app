@@ -99,12 +99,12 @@ class CallbackView(View):
     @staticmethod
     @handler.add(MessageEvent, message=TextMessage)
     def message_event(event):
-        push_text = event.message.text 
+        reply = event.message.text 
         weatherText = getWeather()
 
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=push_text)
+            TextSendMessage(text=reply)
         )
 
         # if push_text == "天気":
