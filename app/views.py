@@ -46,10 +46,10 @@ def getWeather():
         forecastDatetime = timezone('Asia/Tokyo').localize(datetime.datetime.fromtimestamp(item['dt']))
 
         # 本日分のみ通知対象とする
-        if beforeDate != '' and beforeDate != forecastDatetime.strftime('%Y-%m-%d'):
+        if beforeDate != '' and beforeDate != forecastDatetime.strftime('%Y年%m月%d日'):
             break
         else:
-            beforeDate = forecastDatetime.strftime('%Y-%m-%d')
+            beforeDate = forecastDatetime.strftime('%Y年%m月%d日')
 
         weatherDescription = item['weather'][0]['description']
         emoji = ''
