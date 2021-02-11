@@ -67,7 +67,7 @@ def getWeather():
         rainfall = 0
         if 'rain' in item and '3h' in item['rain']:
             rainfall = item['rain']['3h']
-        words += '\n{0}\n天気:{1} {2}\n最高気温:{3}℃\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y年%m月%d日 %H:%M'), emoji, weatherDescription, temperature, rainfall)
+        words += '\n{0}\n天気:{1} {2}\n最高気温:{3}℃\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y/%m/%d %H:%M'), emoji, weatherDescription, temperature, rainfall)
 
     return words
 
