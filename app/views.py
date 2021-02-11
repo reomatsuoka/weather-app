@@ -46,28 +46,28 @@ def getWeather():
         forecastDatetime = timezone('Asia/Tokyo').localize(datetime.datetime.fromtimestamp(item['dt']))
 
         # 本日分のみ通知対象とする
-        if beforeDate != '' and beforeDate != forecastDatetime.strftime('%Y-%m-%d'):
-            break
-        else:
-            beforeDate = forecastDatetime.strftime('%Y-%m-%d')
+        # if beforeDate != '' and beforeDate != forecastDatetime.strftime('%Y-%m-%d'):
+        #     break
+        # else:
+        #     beforeDate = forecastDatetime.strftime('%Y-%m-%d')
 
-        weatherDescription = item['weather'][0]['description']
-        emoji = ''
-        # 絵文字の分岐は適当
-        if '曇' in weatherDescription:
-            emoji = '\uDBC0\uDCAC'
-        elif '雪' in weatherDescription:
-            emoji = '\uDBC0\uDCAB'
-        elif '雨' in weatherDescription:
-            emoji = '\uDBC0\uDCAA'
-        elif '晴' in weatherDescription:
-            emoji = '\uDBC0\uDCA9'
+        # weatherDescription = item['weather'][0]['description']
+        # emoji = ''
+        # # 絵文字の分岐は適当
+        # if '曇' in weatherDescription:
+        #     emoji = '\uDBC0\uDCAC'
+        # elif '雪' in weatherDescription:
+        #     emoji = '\uDBC0\uDCAB'
+        # elif '雨' in weatherDescription:
+        #     emoji = '\uDBC0\uDCAA'
+        # elif '晴' in weatherDescription:
+        #     emoji = '\uDBC0\uDCA9'
 
-        temperature = item['main']['temp']
-        rainfall = 0
-        if 'rain' in item and '3h' in item['rain']:
-            rainfall = item['rain']['3h']
-        words += '\n{0}\n天気:{1} {2}\n気温(℃):{3}\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y-%m-%d %H:%M'), emoji, weatherDescription, temperature, rainfall)
+        # temperature = item['main']['temp']
+        # rainfall = 0
+        # if 'rain' in item and '3h' in item['rain']:
+        #     rainfall = item['rain']['3h']
+        # words += '\n{0}\n天気:{1} {2}\n気温(℃):{3}\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y-%m-%d %H:%M'), emoji, weatherDescription, temperature, rainfall)
 
     return words
 
