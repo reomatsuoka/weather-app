@@ -102,7 +102,7 @@ class CallbackView(View):
         reply = event.message.text 
         weatherText = getWeather()
 
-        if reply == "天気":
+        if reply in "天気":
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=weatherText)
