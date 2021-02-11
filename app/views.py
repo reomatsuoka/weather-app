@@ -63,11 +63,12 @@ def getWeather():
         elif '晴' in weatherDescription:
             emoji = '\uDBC0\uDCA9'
 
-        temperature = item['main']['temp']
+        temperature_max = int(item['main']['temp_max'])
+        temperature_min = int(item['main']['temp_min'])
         rainfall = 0
         if 'rain' in item and '3h' in item['rain']:
             rainfall = item['rain']['3h']
-        words += '\n{0}\n天気:{1} {2}\n最高気温:int({3})℃　最低気温\n雨量(mm):{4}\n'.format(forecastDatetime.strftime('%Y-%m-%d %H:%M'), emoji, weatherDescription, temperature, rainfall)
+        words += '\n{0}\n天気:{1} {2}\n最高気温:{3}℃ 最低気温:{4}℃\n雨量(mm):{5}\n'.format(forecastDatetime.strftime('%Y-%m-%d %H:%M'), emoji, weatherDescription, temperature_max, temperature_min ,rainfall)
 
     return words
 
